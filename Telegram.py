@@ -7,7 +7,7 @@ from aiogram.utils import executor
 logging.basicConfig(level=logging.INFO)
 
 # Токен вашего бота
-API_TOKEN = 'Ваш API'
+API_TOKEN = 'Ваш API_TOKEN'
 
 # Инициализация бота и диспетчера
 bot = Bot(token=API_TOKEN)
@@ -22,5 +22,8 @@ async def start(message: types.Message):
 async def all_messages(message: types.Message):
     print('Введите команду /start, чтобы начать общение.')
 
+async def on_startup(dp):
+    print('Введите команду /start, чтобы начать общение.')
+
 if __name__ == '__main__':
-    executor.start_polling(dp, skip_updates=True)
+    executor.start_polling(dp, skip_updates=True, on_startup=on_startup)
